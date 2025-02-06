@@ -1,6 +1,6 @@
 
 import 'package:smile/Routes/app-routes.dart';
-import 'package:smile/custom-textfield.dart';
+import 'package:smile/widgets/custom-textfield.dart';
 import 'package:smile/pages/Constants.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -103,12 +103,12 @@ class _AuthScreenState extends State<AuthScreen>
       if (!RegExp(r'[a-z]').hasMatch(value)) {
         return '  Password must contain at least one lowercase letter.';
       }
-      if (!RegExp(r'[0-9]').hasMatch(value)) {
-        return '  Password must contain at least one number.';
-      }
-      if (!RegExp(r'[!@#\$&*~]').hasMatch(value)) {
-        return '  Password must contain at least one special character.';
-      }
+      // if (!RegExp(r'[0-9]').hasMatch(value)) {
+      //   return '  Password must contain at least one number.';
+      // }
+      // if (!RegExp(r'[!@#\$&*~]').hasMatch(value)) {
+      //   return '  Password must contain at least one special character.';
+      // }
     }
     
     return null;
@@ -125,30 +125,30 @@ class _AuthScreenState extends State<AuthScreen>
   }
 
   // Check if user has filled the form
-  Future<bool> _hasUserFilledForm(String userId) async {
-    try {
-      final userDoc = await FirebaseFirestore.instance
-          .collection('users')
-          .where('userId', isEqualTo: userId)
-          .get();
+  // Future<bool> _hasUserFilledForm(String userId) async {
+  //   try {
+  //     final userDoc = await FirebaseFirestore.instance
+  //         .collection('users')
+  //         .where('userId', isEqualTo: userId)
+  //         .get();
       
-      return userDoc.docs.isNotEmpty;
-    } catch (e) {
-      print('Error checking user form status: $e');
-      return false;
-    }
-  }
+  //     return userDoc.docs.isNotEmpty;
+  //   } catch (e) {
+  //     print('Error checking user form status: $e');
+  //     return false;
+  //   }
+  // }
 
   // Navigate based on form status
-  Future<void> _handlePostAuthNavigation(User user) async {
-    final hasFilledForm = await _hasUserFilledForm(user.uid);
+  // Future<void> _handlePostAuthNavigation(User user) async {
+  //   final hasFilledForm = await _hasUserFilledForm(user.uid);
     
-    if (hasFilledForm) {
-      Get.offAllNamed(AppRoutes.homeScreen);
-    } else {
-      Get.offAllNamed(AppRoutes.formscreen);
-    }
-  }
+  //   if (hasFilledForm) {
+  //     Get.offAllNamed(AppRoutes.homeScreen);
+  //   } else {
+  //     Get.offAllNamed(AppRoutes.formscreen);
+  //   }
+  // }
 
   // Email/Password Sign Up
   Future<void> registerWithEmail() async {
@@ -268,9 +268,10 @@ class _AuthScreenState extends State<AuthScreen>
       }
 
       setState(() => _isLoading = false);
+      Get.offAllNamed(AppRoutes.homeScreen);
       
       if (userCredential.user != null) {
-        await _handlePostAuthNavigation(userCredential.user!);
+       
       }
     } on FirebaseAuthException catch (e) {
       Get.snackbar(
@@ -318,8 +319,8 @@ class _AuthScreenState extends State<AuthScreen>
       }
 
       setState(() => _isLoading = false);
-      await _handlePostAuthNavigation(userCredential.user!);
-
+      // await _handlePostAuthNavigation(userCredential.user!);
+Get.offAllNamed(AppRoutes.homeScreen);
     } catch (e) {
       setState(() => _isLoading = false);
       ScaffoldMessenger.of(context).showSnackBar(
@@ -353,25 +354,27 @@ class _AuthScreenState extends State<AuthScreen>
                       style: TextStyle(
                         fontSize: 26,
                         fontWeight: FontWeight.bold,
-                        color: Colors.white,
+                        color: Colors.black,
                       ),
                     ),
                     Text(
                       'Sign in/up to enjoy the best career experience',
-                      style: TextStyle(color: Colors.white54),
+                      style: TextStyle(color: Colors.black54),
                     ),
                     SizedBox(height: 30),
                   ],
                 ),
               ),
               Container(
+
                 constraints: BoxConstraints(
                   minHeight: MediaQuery.of(context).size.height - 200,
                 ),
                 padding: const EdgeInsets.symmetric(horizontal: 20),
-                decoration: const BoxDecoration(
-                  color: kBackgroundColorPrimary,
-                  borderRadius: BorderRadius.only(
+                decoration: BoxDecoration(
+                  border: Border.all(color: Colors.black),
+                  color: Colors.white,
+                  borderRadius: const BorderRadius.only(
                     topLeft: Radius.circular(40),
                     topRight: Radius.circular(40),
                   ),
@@ -383,6 +386,7 @@ class _AuthScreenState extends State<AuthScreen>
                       height: 70,
                       margin: const EdgeInsets.only(top: 30),
                       decoration: BoxDecoration(
+                        border: Border.all(color: Colors.black),
                         borderRadius: BorderRadius.circular(40),
                         color: kSecondaryColor,
                       ),
@@ -418,8 +422,8 @@ class _AuthScreenState extends State<AuthScreen>
                                       'Register',
                                       style: GoogleFonts.poppins(
                                         color: _isRegisterMode
-                                            ? kBackgroundColorSecondary
-                                            : kTextSecondaryColor,
+                                            ? Colors.black
+                                            : Colors.grey.shade500,
                                         fontWeight: FontWeight.bold,
                                         fontSize: 20,
                                       ),
@@ -439,8 +443,8 @@ class _AuthScreenState extends State<AuthScreen>
                                       'Login',
                                       style: GoogleFonts.poppins(
                                         color: !_isRegisterMode
-                                            ? kBackgroundColorSecondary
-                                            : kTextSecondaryColor,
+                                            ? Colors.black
+                                            : Colors.grey.shade500,
                                         fontWeight: FontWeight.bold,
                                         fontSize: 20,
                                       ),
@@ -480,7 +484,7 @@ class _AuthScreenState extends State<AuthScreen>
                         height: 57.5,
                         width: double.infinity,
                         decoration: BoxDecoration(
-                          color: kBackgroundColorSecondary,
+                          color: Colors.black,
                           borderRadius: BorderRadius.circular(40),
                         ),
                         child: Center(
@@ -502,7 +506,7 @@ class _AuthScreenState extends State<AuthScreen>
                           child: Container(
                             margin: const EdgeInsets.symmetric(horizontal: 8.0),
                             child: const Divider(
-                              color: kSecondaryColor,
+                              color: Colors.black,
                               thickness: 1.5,
                             ),
                           ),
@@ -510,14 +514,14 @@ class _AuthScreenState extends State<AuthScreen>
                         const Text(
                           'or continue with',
                           style: TextStyle(
-                              color: kBackgroundColorSecondary,
+                              color: Colors.black,
                               fontWeight: FontWeight.bold),
                         ),
                         Expanded(
                           child: Container(
                             margin: const EdgeInsets.symmetric(horizontal: 8.0),
                             child: const Divider(
-                              color: kSecondaryColor,
+                              color: Colors.black,
                               thickness: 1.5,
                             ),
                           ),
@@ -534,8 +538,8 @@ class _AuthScreenState extends State<AuthScreen>
                         height: 57.5,
                         width: double.infinity,
                         decoration: BoxDecoration(
-                          color: kBackgroundColorPrimary,
-                          border: Border.all(color: kSecondaryColor, width: 2),
+                          color: Colors.transparent,
+                          border: Border.all(color: Colors.black, width: 2),
                           borderRadius: BorderRadius.circular(40),
                         ),
                         child: Center(
@@ -552,7 +556,7 @@ class _AuthScreenState extends State<AuthScreen>
                               Text(
                                 'Google',
                                 style: GoogleFonts.poppins(
-                                  color: kBackgroundColorSecondary,
+                                  color: Colors.black,
                                   fontWeight: FontWeight.bold,
                                   fontSize: 17,
                                 ),
@@ -601,7 +605,7 @@ class _AuthScreenState extends State<AuthScreen>
               child: Text(
                 'Forgot Password?',
                 style: TextStyle(
-                  color: kBackgroundColorSecondary,
+                  color: Colors.black,
                   fontWeight: FontWeight.w600,
                 ),
               ),

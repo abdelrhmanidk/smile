@@ -21,7 +21,7 @@ class SplashScreen extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 20.0),
             child: SvgPicture.asset(
               'images/splash.svg', // Your SVG asset path
-              height: 300, // Adjust height as needed
+             // height: 50, // Adjust height as needed
             ),
           ),
           SizedBox(height: 30), // Space between image and button
@@ -32,15 +32,7 @@ class SplashScreen extends StatelessWidget {
 
           Stack(
             children: [
-              Positioned(
-                top: 20,
-                child: 
-                SvgPicture.asset(
-              'images/rocket.svg', // Your SVG asset path
-              height: 300, // Adjust height as needed
-            ),
-              
-              ),
+            
             
               
 
@@ -48,7 +40,14 @@ class SplashScreen extends StatelessWidget {
                 height: MediaQuery.of(context).size.height *
                     0.4, // 40% of the screen height
                 width: double.infinity,
-                decoration: BoxDecoration(color: Colors.white),
+                decoration: BoxDecoration(color: Colors.white,
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(40),
+                  topRight: Radius.circular(40),
+
+                )
+                
+                ),
                 child: Column(
                   children: [
                     SizedBox(height: 30,),
@@ -100,6 +99,24 @@ class SplashScreen extends StatelessWidget {
                     ),
                     SizedBox(height: MediaQuery.of(context).size.height * .03,)
                   ],
+                ),
+              ),
+
+
+                 Positioned(
+                top: 170, // Adjust the top position to move the rocket image upwards
+                left: 0, // Adjust the right position for alignment
+                child: Image.asset(
+                  'images/Rocket.png', // Your SVG asset path
+                  height: 150, // Adjust height as needed
+                ),
+              ),
+                Positioned(
+                top: 230, // Adjust the top position to move the rocket image upwards
+                right: 50, // Adjust the right position for alignment
+                child: Image.asset(
+                  'images/Glowing Star.png', // Your SVG asset path
+                  height: 30, // Adjust height as needed
                 ),
               ),
             ],

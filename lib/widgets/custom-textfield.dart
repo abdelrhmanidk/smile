@@ -26,8 +26,8 @@ class CustomTextField extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         color: Colors.transparent,
-        border: Border.all(color: kSecondaryColor, width: 2),
-        borderRadius: BorderRadius.circular(15),
+        border: Border.all(color: Colors.black, width: 2),
+        borderRadius: BorderRadius.circular(30),
       ),
       child: TextFormField(
         controller: controller,
@@ -37,12 +37,12 @@ class CustomTextField extends StatelessWidget {
         decoration: InputDecoration(
           labelText: labelText,
           border: InputBorder.none,
-          prefixIcon: Icon(icon, color: kBackgroundColorSecondary),
+          prefixIcon: Icon(icon, color: Colors.black),
           suffixIcon: isPassword
               ? IconButton(
                   icon: Icon(
                     isPasswordVisible ? Icons.visibility : Icons.visibility_off,
-                    color: kBackgroundColorSecondary,
+                    color: Colors.black,
                   ),
                   onPressed: togglePasswordVisibility,
                 )
