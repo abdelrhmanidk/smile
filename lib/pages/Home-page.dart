@@ -1,21 +1,26 @@
+
 // import 'package:flutter/material.dart';
+// import 'package:get/get.dart';
+// import 'package:smile/Routes/app-routes.dart';
+// import 'package:smile/pages/Constants.dart';
+// import 'package:smile/pages/Search-page.dart';
 // import 'package:smile/widgets/game-contaier.dart';
 // import 'package:smile/widgets/search-bar.dart';
 
 // List<Map<String, dynamic>> games = [
 //   {
 //     "title": "Shapes",
-//     "color":Color(0xffFFF7E5),
-//     "lottieAsset":"images/shapes.json",
+//     "color": kshapes,
+//     "lottieAsset": "images/shapes.json",
 //   },
 //   {
 //     "title": "Colors",
-//     "color": Color(0xffA597F8),
-//     "lottieAsset":"images/colors.json",
+//     "color": kColors,
+//     "lottieAsset": "images/colors.json",
 //   },
 //   {
 //     "title": "Matching",
-//     "color":Color(0xffFF8F8F),
+//     "color": kMatching,
 //     "lottieAsset": "images/match.json",
 //   },
 // ];
@@ -28,34 +33,40 @@
 //       body: Column(
 //         crossAxisAlignment: CrossAxisAlignment.start,
 //         children: [
-//           SizedBox(
-//             height: 50,
-//           ),
+//           const SizedBox(height: 50),
 //           Padding(
-//             padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+//             padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
 //             child: Column(
 //               children: [
 //                 Row(
 //                   children: [
-//                     CircleAvatar(
-//                       radius: 30,
-//                       backgroundColor: Colors.grey.shade300,
-//                       child: Icon(Icons.person, color: Colors.grey.shade600),
+//                     InkWell(
+//                       onTap: () {
+//                         Get.toNamed(AppRoutes.profileScreen);
+
+//                       },
+                      
+//                       child: CircleAvatar(
+                        
+//                         radius: 30,
+//                         backgroundColor: Colors.grey.shade300,
+//                         child: Icon(Icons.person, color: Colors.grey.shade600),
+//                       ),
 //                     ),
-//                     SizedBox(width: 10),
+//                     const SizedBox(width: 10),
 //                     Expanded(
 //                       child: Column(
 //                         crossAxisAlignment: CrossAxisAlignment.start,
 //                         children: [
-//                           Text(
+//                           const Text(
 //                             "Hello Spidey",
 //                             style: TextStyle(
 //                                 fontSize: 18, fontWeight: FontWeight.bold),
 //                           ),
-//                           SizedBox(height: 4),
+//                           const SizedBox(height: 4),
 //                           Row(
 //                             children: [
-//                               Icon(Icons.menu_book, size: 16),
+//                               const Icon(Icons.menu_book, size: 16),
 //                               Expanded(
 //                                 child: Container(
 //                                   margin: EdgeInsets.symmetric(horizontal: 10),
@@ -82,20 +93,27 @@
 //                         ],
 //                       ),
 //                     ),
-//                     Container(
-//                       height: 62,
-//                       width: 62,
-//                       decoration: BoxDecoration(
-//                         border: Border.all(color: Colors.black),
-//                         borderRadius: BorderRadius.circular(50),
-//                       ),
-//                       child: Center(
-//                         child: Icon(Icons.menu, size: 28),
+//                     InkWell(
+//                       splashColor: Colors.transparent,
+//                       onTap: () {
+//                         print("Navigating to search screen");
+//                         Get.toNamed(AppRoutes.searchScreen);
+//                       }, // Navigates to the login screenƒ
+//                       child: Container(
+//                         height: 62,
+//                         width: 62,
+//                         decoration: BoxDecoration(
+//                           border: Border.all(color: Colors.black),
+//                           borderRadius: BorderRadius.circular(50),
+//                         ),
+//                         child: Center(
+//                           child: Icon(Icons.menu, size: 28),
+//                         ),
 //                       ),
 //                     ),
 //                   ],
 //                 ),
-//                 SizedBox(height: 20),
+//                 const SizedBox(height: 20),
 //                 Container(
 //                   height: 170,
 //                   width: double.infinity,
@@ -114,31 +132,27 @@
 //               ],
 //             ),
 //           ),
-//           // Search Bar
-//           SearchBarWidget(),
-//           // Game Containers
-//           Expanded(
-//             child: ListView.builder(
-//               itemCount: games.length,
-//               itemBuilder: (context, index) {
-//                 return GameContainer(
-//                     title: games[index]["title"],
-//                     color: games[index]["color"],
-//                     lottieAsset: games[index]["lottieAsset"]);
-//               },
-//             ),
+
+//           SizedBox(
+//             height: 10,
 //           ),
+//           // Search Bar
+
+//           Expanded(child: SearchBarWidget(items: games)),
+
+
 //         ],
 //       ),
 //     );
 //   }
 // }
 
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
 import 'package:smile/Routes/app-routes.dart';
 import 'package:smile/pages/Constants.dart';
-import 'package:smile/pages/Search-page.dart';
 import 'package:smile/widgets/game-contaier.dart';
 import 'package:smile/widgets/search-bar.dart';
 
@@ -160,7 +174,14 @@ List<Map<String, dynamic>> games = [
   },
 ];
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  var _currentIndex = 0;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -175,20 +196,6 @@ class HomePage extends StatelessWidget {
               children: [
                 Row(
                   children: [
-                    InkWell(
-                      onTap: () {
-                        Get.toNamed(AppRoutes.profileScreen);
-
-                      },
-                      
-                      child: CircleAvatar(
-                        
-                        radius: 30,
-                        backgroundColor: Colors.grey.shade300,
-                        child: Icon(Icons.person, color: Colors.grey.shade600),
-                      ),
-                    ),
-                    const SizedBox(width: 10),
                     Expanded(
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -196,7 +203,7 @@ class HomePage extends StatelessWidget {
                           const Text(
                             "Hello Spidey",
                             style: TextStyle(
-                                fontSize: 18, fontWeight: FontWeight.bold),
+                                fontSize: 24, fontWeight: FontWeight.bold),
                           ),
                           const SizedBox(height: 4),
                           Row(
@@ -228,24 +235,6 @@ class HomePage extends StatelessWidget {
                         ],
                       ),
                     ),
-                    InkWell(
-                      splashColor: Colors.transparent,
-                      onTap: () {
-                        print("Navigating to search screen");
-                        Get.toNamed(AppRoutes.searchScreen);
-                      }, // Navigates to the login screenƒ
-                      child: Container(
-                        height: 62,
-                        width: 62,
-                        decoration: BoxDecoration(
-                          border: Border.all(color: Colors.black),
-                          borderRadius: BorderRadius.circular(50),
-                        ),
-                        child: Center(
-                          child: Icon(Icons.menu, size: 28),
-                        ),
-                      ),
-                    ),
                   ],
                 ),
                 const SizedBox(height: 20),
@@ -272,24 +261,10 @@ class HomePage extends StatelessWidget {
             height: 10,
           ),
           // Search Bar
-
           Expanded(child: SearchBarWidget(items: games)),
-
-          // Game Containers
-          // Expanded(
-          //   child: ListView.builder(
-          //     itemCount: games.length,
-          //     itemBuilder: (context, index) {
-          //       return GameContainer(
-          //         title: games[index]["title"],
-          //         color: games[index]["color"],
-          //         lottieAsset: games[index]["lottieAsset"],
-          //       );
-          //     },
-          //   ),
-          // ),
         ],
       ),
+     
     );
   }
 }

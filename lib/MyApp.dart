@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:smile/Routes/app-pages.dart';
 import 'package:smile/pages/Constants.dart';
 import 'package:smile/pages/Home-page.dart';
+import 'package:smile/pages/Main-page.dart';
 import 'package:smile/pages/splash-screen.dart';
 
 class MyApp extends StatefulWidget {
@@ -32,7 +33,7 @@ class _MyAppState extends State<MyApp> {
       getPages: AppPages.routes,
       theme: ThemeData(scaffoldBackgroundColor: kBackgroundColorPrimary),
       // Dynamically decide the home screen
-      home: user != null ? HomePage() : SplashScreen(),
+      home: user != null ? MainScreen() : SplashScreen(),
     );
   }
 }

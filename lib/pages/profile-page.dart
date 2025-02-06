@@ -36,54 +36,54 @@ class ProfilePage extends StatelessWidget {
                   height: 50,
                 ),
                 // Profile Section
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    InkWell(
-                      splashColor: Colors.transparent,
-                      onTap: () {
-                         Navigator.pop(context); // Navigate back to the previous screen
+                // Row(
+                //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                //   children: [
+                //     // InkWell(
+                //     //   splashColor: Colors.transparent,
+                //     //   onTap: () {
+                //     //      Navigator.pop(context); // Navigate back to the previous screen
 
-                      }, // Navigates to the login screenƒ
-                      child: Container(
-                        height: 62,
-                        width: 62,
-                        decoration: BoxDecoration(
-                          border: Border.all(color: Colors.black),
-                          borderRadius: BorderRadius.circular(50),
-                        ),
-                        child: Center(
-                          child: Icon(Icons.arrow_back, size: 28),
-                        ),
-                      ),
-                    ),
-                    Text(
-                      "Spidey",
-                      style: GoogleFonts.poppins(
-                        fontSize: 24,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    InkWell(
-                      splashColor: Colors.transparent,
-                      onTap: () {
-                        print("Navigating to search screen");
-                        Get.toNamed(AppRoutes.searchScreen);
-                      }, // Navigates to the login screenƒ
-                      child: Container(
-                        height: 62,
-                        width: 62,
-                        decoration: BoxDecoration(
-                          border: Border.all(color: Colors.black),
-                          borderRadius: BorderRadius.circular(50),
-                        ),
-                        child: Center(
-                          child: Icon(Icons.menu, size: 28),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
+                //     //   }, // Navigates to the login screenƒ
+                //     //   child: Container(
+                //     //     height: 62,
+                //     //     width: 62,
+                //     //     decoration: BoxDecoration(
+                //     //       border: Border.all(color: Colors.black),
+                //     //       borderRadius: BorderRadius.circular(50),
+                //     //     ),
+                //     //     child: Center(
+                //     //       child: Icon(Icons.arrow_back, size: 28),
+                //     //     ),
+                //     //   ),
+                //     // ),
+                //     Text(
+                //       "Spidey",
+                //       style: GoogleFonts.poppins(
+                //         fontSize: 24,
+                //         fontWeight: FontWeight.bold,
+                //       ),
+                //     ),
+                //     // InkWell(
+                //     //   splashColor: Colors.transparent,
+                //     //   onTap: () {
+                //     //     print("Navigating to search screen");
+                //     //     Get.toNamed(AppRoutes.searchScreen);
+                //     //   }, // Navigates to the login screenƒ
+                //     //   child: Container(
+                //     //     height: 62,
+                //     //     width: 62,
+                //     //     decoration: BoxDecoration(
+                //     //       border: Border.all(color: Colors.black),
+                //     //       borderRadius: BorderRadius.circular(50),
+                //     //     ),
+                //     //     child: Center(
+                //     //       child: Icon(Icons.menu, size: 28),
+                //     //     ),
+                //     //   ),
+                //     // ),
+                //   ],
+                // ),
                 SizedBox(height: 20),
 
                 // Score Section
@@ -174,7 +174,7 @@ class ProfilePage extends StatelessWidget {
                             child: Row(
                               children: [
                                 SizedBox(
-                                  width: 7,
+                                  width: 5,
                                 ),
                                 Container(
                                   height: 60,

@@ -6,7 +6,7 @@ class AppRoutes {
   static const String loginScreen = '/login';
   static const String formscreen = '/form';
   static const String searchScreen = '/search';
-  static const String trainingOfferScreen = '/training_offer';
+  static const String chatScreen= '/chatScreen';
   static const String filterScreen = '/filter';
   static const String menuScreen = '/menu';
   static const String notificationsScreen = '/notifications';
