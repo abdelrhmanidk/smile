@@ -107,7 +107,6 @@ class _SearchBarWidgetState extends State<SearchBarWidget> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-      
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 0),
           child: Container(
@@ -148,6 +147,7 @@ class _SearchBarWidgetState extends State<SearchBarWidget> {
                 title: filteredItems[index]["title"],
                 color: filteredItems[index]["color"],
                 lottieAsset: filteredItems[index]["lottieAsset"],
+                route: filteredItems[index]["route"] ?? "/default", // Provide a default route
               );
             },
           ),
@@ -156,4 +156,3 @@ class _SearchBarWidgetState extends State<SearchBarWidget> {
     );
   }
 }
-

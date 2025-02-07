@@ -8,6 +8,8 @@ void main() async {
   
   // Ensure Flutter binding is initialized
   WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge);
+
 
   // Initialize Firebase asynchronously
   await Firebase.initializeApp();
@@ -18,7 +20,6 @@ void main() async {
       statusBarBrightness: Brightness.light, // For iOS
     ),
   );
-  debugPaintSizeEnabled = false;
 
   // Run the app after Firebase is initialized
   runApp(MyApp());

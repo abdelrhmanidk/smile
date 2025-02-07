@@ -1,9 +1,10 @@
 
+
 // import 'package:flutter/material.dart';
 // import 'package:get/get.dart';
+// import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
 // import 'package:smile/Routes/app-routes.dart';
 // import 'package:smile/pages/Constants.dart';
-// import 'package:smile/pages/Search-page.dart';
 // import 'package:smile/widgets/game-contaier.dart';
 // import 'package:smile/widgets/search-bar.dart';
 
@@ -11,21 +12,28 @@
 //   {
 //     "title": "Shapes",
 //     "color": kshapes,
-//     "lottieAsset": "images/shapes.json",
+//     "lottieAsset": "assets/shapes.json",
 //   },
 //   {
 //     "title": "Colors",
 //     "color": kColors,
-//     "lottieAsset": "images/colors.json",
+//     "lottieAsset": "assets/colors.json",
 //   },
 //   {
 //     "title": "Matching",
 //     "color": kMatching,
-//     "lottieAsset": "images/match.json",
+//     "lottieAsset": "assets/match.json",
 //   },
 // ];
 
-// class HomePage extends StatelessWidget {
+// class HomePage extends StatefulWidget {
+//   @override
+//   State<HomePage> createState() => _HomePageState();
+// }
+
+// class _HomePageState extends State<HomePage> {
+//   var _currentIndex = 0;
+
 //   @override
 //   Widget build(BuildContext context) {
 //     return Scaffold(
@@ -40,20 +48,6 @@
 //               children: [
 //                 Row(
 //                   children: [
-//                     InkWell(
-//                       onTap: () {
-//                         Get.toNamed(AppRoutes.profileScreen);
-
-//                       },
-                      
-//                       child: CircleAvatar(
-                        
-//                         radius: 30,
-//                         backgroundColor: Colors.grey.shade300,
-//                         child: Icon(Icons.person, color: Colors.grey.shade600),
-//                       ),
-//                     ),
-//                     const SizedBox(width: 10),
 //                     Expanded(
 //                       child: Column(
 //                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -61,7 +55,7 @@
 //                           const Text(
 //                             "Hello Spidey",
 //                             style: TextStyle(
-//                                 fontSize: 18, fontWeight: FontWeight.bold),
+//                                 fontSize: 24, fontWeight: FontWeight.bold),
 //                           ),
 //                           const SizedBox(height: 4),
 //                           Row(
@@ -93,24 +87,6 @@
 //                         ],
 //                       ),
 //                     ),
-//                     InkWell(
-//                       splashColor: Colors.transparent,
-//                       onTap: () {
-//                         print("Navigating to search screen");
-//                         Get.toNamed(AppRoutes.searchScreen);
-//                       }, // Navigates to the login screenƒ
-//                       child: Container(
-//                         height: 62,
-//                         width: 62,
-//                         decoration: BoxDecoration(
-//                           border: Border.all(color: Colors.black),
-//                           borderRadius: BorderRadius.circular(50),
-//                         ),
-//                         child: Center(
-//                           child: Icon(Icons.menu, size: 28),
-//                         ),
-//                       ),
-//                     ),
 //                   ],
 //                 ),
 //                 const SizedBox(height: 20),
@@ -137,40 +113,64 @@
 //             height: 10,
 //           ),
 //           // Search Bar
-
 //           Expanded(child: SearchBarWidget(items: games)),
-
-
 //         ],
 //       ),
+     
 //     );
 //   }
 // }
 
 
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
 import 'package:smile/Routes/app-routes.dart';
 import 'package:smile/pages/Constants.dart';
-import 'package:smile/widgets/game-contaier.dart';
 import 'package:smile/widgets/search-bar.dart';
 
 List<Map<String, dynamic>> games = [
   {
     "title": "Shapes",
     "color": kshapes,
-    "lottieAsset": "images/shapes.json",
+    "lottieAsset": "assets/shapes.json",
+    "route": AppRoutes.shapeListScreen,
   },
   {
     "title": "Colors",
     "color": kColors,
-    "lottieAsset": "images/colors.json",
+    "lottieAsset": "assets/colors.json",
+    "route": AppRoutes.colorListScreen,
   },
   {
     "title": "Matching",
     "color": kMatching,
-    "lottieAsset": "images/match.json",
+    "lottieAsset": "assets/match.json",
+    "route": AppRoutes.puzzleScreen,
+  },
+  {
+    "title": "Emotions",
+    "color": kshapes,
+    "lottieAsset": "assets/emotions.json",
+    "route": AppRoutes.emotionLearningScreen,
+  },
+  {
+    "title": "Emotion Game",
+    "color": kColors,
+    "lottieAsset": "assets/emotion_game.json",
+    "route": AppRoutes.gameScreen,
+  },
+  {
+    "title": "Animals",
+    "color": kMatching,
+    "lottieAsset": "assets/animals.json",
+    "route": AppRoutes.animalGridScreen,
+  },
+  {
+    "title": "Animal Puzzle",
+    "color": kshapes,
+    "lottieAsset": "assets/animal_puzzle.json",
+    "route": AppRoutes.animalPuzzleScreen,
   },
 ];
 
@@ -180,8 +180,6 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  var _currentIndex = 0;
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -194,49 +192,6 @@ class _HomePageState extends State<HomePage> {
             padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
             child: Column(
               children: [
-                Row(
-                  children: [
-                    Expanded(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          const Text(
-                            "Hello Spidey",
-                            style: TextStyle(
-                                fontSize: 24, fontWeight: FontWeight.bold),
-                          ),
-                          const SizedBox(height: 4),
-                          Row(
-                            children: [
-                              const Icon(Icons.menu_book, size: 16),
-                              Expanded(
-                                child: Container(
-                                  margin: EdgeInsets.symmetric(horizontal: 10),
-                                  height: 8,
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(10),
-                                    color: Colors.grey.shade300,
-                                  ),
-                                  child: Align(
-                                    alignment: Alignment.centerLeft,
-                                    child: Container(
-                                      width: 60,
-                                      height: 8,
-                                      decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(10),
-                                        color: Colors.purple,
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
                 const SizedBox(height: 20),
                 Container(
                   height: 170,
@@ -256,15 +211,10 @@ class _HomePageState extends State<HomePage> {
               ],
             ),
           ),
-
-          SizedBox(
-            height: 10,
-          ),
-          // Search Bar
+          const SizedBox(height: 10),
           Expanded(child: SearchBarWidget(items: games)),
         ],
       ),
-     
     );
   }
 }

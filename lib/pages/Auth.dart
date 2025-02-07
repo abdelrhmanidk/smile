@@ -547,7 +547,7 @@ Get.offAllNamed(AppRoutes.homeScreen);
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Image.asset(
-                                'images/google.png',
+                                'assets/google.png',
                                 height: 25,
                               ),
                               const SizedBox(

@@ -15,8 +15,8 @@ class ProfilePage extends StatelessWidget {
   ];
 
   final List<Map<String, dynamic>> lastLessons = [
-    {"title": "Shapes", "duration": "15min", "icon":"images/shapes.png", "color":kshapes},
-    {"title": "Colors", "duration": "20min", "icon":"images/colors.png", "color":kColors},
+    {"title": "Shapes", "duration": "15min", "icon":"assets/shapes.png", "color":kshapes},
+    {"title": "Colors", "duration": "20min", "icon":"assets/colors.png", "color":kColors},
   ];
 
   ProfilePage({super.key});

@@ -33,6 +33,8 @@ class _MainScreenState extends State<MainScreen> {
         children: _pages,
       ),
       bottomNavigationBar: SalomonBottomBar(
+        
+        margin: EdgeInsets.only(bottom: 35, right: 10,left: 10,top:10),
         itemPadding: EdgeInsets.symmetric(vertical: 15, horizontal: 15),
         currentIndex: _currentIndex,
         onTap: (index) {

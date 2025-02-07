@@ -20,7 +20,7 @@ class SplashScreen extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20.0),
             child: SvgPicture.asset(
-              'images/splash.svg', // Your SVG asset path
+              'assets/splash.svg', // Your SVG asset path
              // height: 50, // Adjust height as needed
             ),
           ),
@@ -107,7 +107,7 @@ class SplashScreen extends StatelessWidget {
                 top: 170, // Adjust the top position to move the rocket image upwards
                 left: 0, // Adjust the right position for alignment
                 child: Image.asset(
-                  'images/Rocket.png', // Your SVG asset path
+                  'assets/Rocket.png', // Your SVG asset path
                   height: 150, // Adjust height as needed
                 ),
               ),
@@ -115,7 +115,7 @@ class SplashScreen extends StatelessWidget {
                 top: 230, // Adjust the top position to move the rocket image upwards
                 right: 50, // Adjust the right position for alignment
                 child: Image.asset(
-                  'images/Glowing Star.png', // Your SVG asset path
+                  'assets/Glowing Star.png', // Your SVG asset path
                   height: 30, // Adjust height as needed
                 ),
               ),
