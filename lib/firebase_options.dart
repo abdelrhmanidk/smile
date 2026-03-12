@@ -4,16 +4,7 @@ import 'package:firebase_core/firebase_core.dart' show FirebaseOptions;
 import 'package:flutter/foundation.dart'
     show defaultTargetPlatform, kIsWeb, TargetPlatform;
 
-/// Default [FirebaseOptions] for use with your Firebase apps.
-///
-/// Example:
-/// ```dart
-/// import 'firebase_options.dart';
-/// // ...
-/// await Firebase.initializeApp(
-///   options: DefaultFirebaseOptions.currentPlatform,
-/// );
-/// ```
+
 class DefaultFirebaseOptions {
   static FirebaseOptions get currentPlatform {
     if (kIsWeb) {
@@ -47,29 +38,29 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyAByWVryW3YEmkj4SpE8_MFK9pZBd55aVM',
-    appId: '1:567805199030:web:cfb92d0479741771e59c17',
-    messagingSenderId: '567805199030',
-    projectId: 'smile-cfba8',
-    authDomain: 'smile-cfba8.firebaseapp.com',
-    storageBucket: 'smile-cfba8.firebasestorage.app',
-    measurementId: 'G-VXY6CYL3HT',
+    apiKey: '--',
+    appId: '--',
+    messagingSenderId: '--',
+    projectId: '--',
+    authDomain: '--',
+    storageBucket: '--',
+    measurementId: '--',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyALsN4J-v688zmBCnt7Ef05ndTQvLr4Jes',
-    appId: '1:567805199030:android:e9b9eaddd0fcd246e59c17',
-    messagingSenderId: '567805199030',
-    projectId: 'smile-cfba8',
-    storageBucket: 'smile-cfba8.firebasestorage.app',
+    apiKey: '--',
+    appId: '--',
+    messagingSenderId: '--',
+    projectId: '--',
+    storageBucket: '--',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyDINvuoNjl_MwT5bKoWbSkb6SBKYUDnHqc',
-    appId: '1:567805199030:ios:18e2eebbc5807fdee59c17',
-    messagingSenderId: '567805199030',
-    projectId: 'smile-cfba8',
-    storageBucket: 'smile-cfba8.firebasestorage.app',
-    iosBundleId: 'com.example.smile',
+    apiKey: '--',
+    appId: '--',
+    messagingSenderId: '--',
+    projectId: '--',
+    storageBucket: '--',
+    iosBundleId: '--',
   );
 }
