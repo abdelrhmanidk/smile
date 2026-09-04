@@ -1,110 +1,77 @@
-# Smile — Educational App for Children with Autism
+# Smile — AI-Assisted Learning for Children with Autism
 
 <p align="center">
   <img src="https://img.shields.io/badge/Flutter-3.x-02569B?logo=flutter&logoColor=white&style=flat-square"/>
   <img src="https://img.shields.io/badge/Firebase-Auth%20%26%20Firestore-FFCA28?logo=firebase&logoColor=black&style=flat-square"/>
-  <img src="https://img.shields.io/badge/Platform-Android%20%7C%20iOS-lightgrey?style=flat-square"/>
   <img src="https://img.shields.io/badge/Language-Arabic%20RTL-4CAF50?style=flat-square"/>
   <img src="https://img.shields.io/badge/AI-Llama%203.3%2070B-7B2FBE?style=flat-square"/>
 </p>
 
-**Smile** is an Arabic-first Flutter application designed to support children with autism in building foundational skills through interactive games, visual learning, and an AI-powered chat companion.
+> **1st Place in Egypt — Benha University AI Hackathon**
 
----
+**Smile** is an Arabic-first Flutter application designed to help children on the autism spectrum build foundational skills through visual learning, interactive games, and an AI-powered chat companion.
 
-## Features
+The project was developed by a student team led by [Abdelrahman Elsharkawi](https://github.com/abdelrhmanidk).
 
-**Learning Modules** — Shapes, Colors, Emotions, and Animals, each with dedicated detail screens, animations, and audio feedback.
+## What it does
 
-**Interactive Games** — A shape-matching quiz, an emotion drag-and-drop game with 3 progressive levels, and an Arabic letter spelling puzzle for animals.
+- **Learning modules:** Shapes, colors, emotions, and animals with animations and audio feedback.
+- **Interactive games:** Shape matching, progressive emotion exercises, and Arabic-letter spelling puzzles.
+- **AI chat companion:** Llama 3.3 70B through DeepInfra, prompted to use short sentences, patient language, positive reinforcement, and emotional awareness.
+- **Authentication and persistence:** Email/password, Google Sign-In, Firebase Auth, and Cloud Firestore.
 
-**AI Chat Companion** — Powered by Llama 3.3 70B via DeepInfra, configured to communicate patiently with children using short sentences, positive reinforcement, and emotional awareness.
+## Engineering highlights
 
-**Authentication** — Email/password with verification, Google Sign-In, and forgot-password support, backed by Firebase Auth and Firestore.
-
----
-
-## Tech Stack
-
-| Concern | Technology |
+| Area | Implementation |
 |---|---|
-| Framework | Flutter 3.x + Dart |
-| State & Routing | GetX |
-| Backend | Firebase Auth, Cloud Firestore |
-| AI | DeepInfra — `meta-llama/Llama-3.3-70B-Instruct` |
-| Animations | Lottie, Hero transitions, AnimatedBuilder |
-| Audio / Haptics | audioplayers, vibration |
-| UI | Google Fonts (Poppins), flutter_svg, salomon_bottom_bar |
+| Application | Flutter 3.x and Dart |
+| State and routing | GetX |
+| Backend services | Firebase Auth and Cloud Firestore |
+| LLM integration | DeepInfra — `meta-llama/Llama-3.3-70B-Instruct` |
+| Interaction design | Lottie, audio, haptics, drag-and-drop, and custom painters |
+| Accessibility direction | Arabic-first RTL interface with short, supportive interactions |
 
----
+## Project structure
 
-## Project Structure
-
-```
+```text
 lib/
-├── main.dart / MyApp.dart          # Entry point, Firebase init, auth state
-├── Routes/                         # GetX named routes & page definitions
-├── models/                         # Data models (Animal, Emotion, Shape, Feeling…)
-├── pages/                          # Core screens (Auth, Home, Chat, Profile, Search)
-├── screens/                        # Feature screens (Shape, Color, Emotion, Animal, Games)
-└── widgets/                        # Reusable components (painters, cards, dialogs…)
+├── main.dart / MyApp.dart          # Firebase initialization and auth state
+├── Routes/                         # GetX routes
+├── models/                         # Learning and game data models
+├── pages/                          # Auth, home, chat, profile, and search
+├── screens/                        # Learning modules and interactive games
+└── widgets/                        # Reusable UI and interaction components
 ```
 
----
-
-## Getting Started
+## Run locally
 
 ### Prerequisites
-- Flutter SDK `>=3.0.0`
-- A configured Firebase project (Android & iOS)
+
+- Flutter SDK 3.x
+- A configured Firebase project
 - A DeepInfra API key
 
-### Setup
-
 ```bash
-# 1. Clone and install
-git clone https://github.com/your-username/smile.git
+git clone https://github.com/abdelrhmanidk/smile.git
 cd smile
 flutter pub get
-
-# 2. Configure Firebase
 flutterfire configure
-# Enable: Email/Password auth, Google Sign-In, Cloud Firestore
-
-# 3. Add your AI API key
-# In lib/pages/chat-page.dart:
-final String apiKey = "YOUR_DEEPINFRA_API_KEY";
-
-# 4. Run
 flutter run
 ```
 
----
+For local prototyping, configure the model provider in `lib/pages/chat-page.dart`.
+
+> **Security note:** Do not ship an LLM provider key inside the client application. A production deployment should send model requests through an authenticated backend proxy with rate limiting and secret management.
 
 ## Roadmap
 
-- [ ] Secure AI API key behind a backend proxy
-- [ ] Persist game scores to Firestore
-- [ ] Add a parent/teacher progress dashboard
-- [ ] Expand content (numbers, Arabic letters)
-- [ ] English localization
-- [ ] Publish to Google Play & App Store
-
----
-
-## Contributing
-
-1. Fork the repository
-2. Create a feature branch: `git checkout -b feature/your-feature`
-3. Commit and push your changes
-4. Open a Pull Request
-
----
+- [ ] Move LLM inference behind a secure backend
+- [ ] Persist learning progress and game scores
+- [ ] Add a parent and teacher analytics dashboard
+- [ ] Expand Arabic learning content
+- [ ] Add English localization
+- [ ] Publish production mobile builds
 
 ## License
 
-MIT License — see [LICENSE](LICENSE) for details.
-
----
-
-<p align="center">Built to make learning accessible for every child.</p>
+MIT — see [LICENSE](LICENSE).
